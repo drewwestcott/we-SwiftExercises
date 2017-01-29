@@ -1,0 +1,28 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+var str = "Hello, playground"
+
+let localData = UserDefaults.standard
+let currentDate = NSDate()
+
+localData.set(currentDate, forKey: "savedDate")
+
+if let savedDate = localData.object(forKey: "savedDate") as? Date {
+	
+	// How many days ago was that date saved?
+	print(savedDate)
+	
+	
+} else {
+	let savedDate = currentDate
+}
+
+// Above doesn't seem to be saving inside a playground so manualy creating a start date.
+let dateFormatter = DateFormatter()
+dateFormatter.dateFormat = "dd/MM/yyyy"
+let startDate = dateFormatter.date(from: "29/01/2017")
+
+//let difference = currentDate.timeIntervalSince(startDate!) / 86400.0
+let numberOfDaysPassed = Int(currentDate.timeIntervalSince(startDate!) / 86400.0)
